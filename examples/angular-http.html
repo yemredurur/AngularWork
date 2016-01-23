@@ -9,7 +9,12 @@
 <body ng-controller="HttpViewController">
 <div>
     <div class="container">
-
+        <br/>
+        <form ng-submit="searchUser()">
+            <input type="text" ng-model="userName" placeholder="Search for users..." class="form-control">
+            <button class="btn btn-info">Search</button>
+        </form>
+        <br/>
         <h1>Users List</h1>
         <table class="table table-bordered table-striped table-hover">
             <tr ng-repeat="user in usersList">

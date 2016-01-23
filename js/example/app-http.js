@@ -11,6 +11,7 @@ app.controller('HttpViewController', ['$scope','$http', function($scope, $http){
     $http.get(usersJsonUrl)
         .success(function (data) {
             $scope.usersList = data;
+            $scope.usersListTemp = data;
         });
 
     $scope.getComments = function ($userId) {
@@ -19,5 +20,22 @@ app.controller('HttpViewController', ['$scope','$http', function($scope, $http){
                 $scope.comments = data;
             });
     };
+
+    $scope.searchUser = function () {
+        $scope.usersList = $scope.usersListTemp;
+        $scope.searchResult = $scope.usersList.filter(function(item){
+            return item.id == $scope.userName;
+        });
+        $scope.userName = '';
+        $scope.usersList = $scope.searchResult;
+
+        if(!$scope.searchResult.length){
+            alert('No result!');
+            $scope.usersList = $scope.usersListTemp;
+        }
+
+
+
+    }
 
 }]);
