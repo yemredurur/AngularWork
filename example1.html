@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html ng-app="expensesApp">
+<html ng-app="exampleApp">
 <head>
     <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
 </head>
 <title>Single Expenses Tracker</title>
-<body ng-controller="ExpensesViewController">
+<body ng-controller="ExampleViewController">
 <div>
     <h1>{{ yourTitle }}!</h1>
     <h2>{{ name }}!</h2>
@@ -24,6 +24,19 @@
     <div style="margin-top:50px">
         <textarea  ng-model="yourTitle"></textarea>
     </div>
+
+    <ul>
+        <li ng-repeat="item in items">
+            {{ item.name }} -
+            <span style="color: darkred;" ng-repeat="ingredients in item.ingredients"> {{ ingredients }} </span>
+        </li>
+    </ul>
+
+    <select ng-model="foods" name="food"  ng-options="item.id as item.name for item in items" ng-change="selectFood(foods)"></select>
+    <select name="ingredients" ng-model="ingredients" ng-options="item as item for item in selectedItem"></select>
+
+
+
 </div>
 </body>
 </html>
