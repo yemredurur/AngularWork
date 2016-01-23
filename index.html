@@ -7,9 +7,23 @@
 <title>Single Expenses Tracker</title>
 <body ng-controller="ExpensesViewController">
 <div>
+    <h1>{{ yourTitle }}!</h1>
     <h2>{{ name }}!</h2>
-    <input type="text" ng-model="yourName" placeholder="Enter a name here">
-    <h2>{{ yourName }}!</h2>
+
+    <p>{{ expense.description }} - {{ expense.amount }}</p>
+    <button ng-click="increaseAmount()">increase amount</button>
+
+    <div style="margin-top:50px">
+        <input type="text" ng-model="expense.description" placeholder="Enter a description here">
+    </div>
+
+    <div style="margin-top:50px">
+        <input type="text" ng-model="expense.amount" placeholder="Enter a amount here">
+    </div>
+
+    <div style="margin-top:50px">
+        <textarea  ng-model="yourTitle"></textarea>
+    </div>
 </div>
 </body>
 </html>
