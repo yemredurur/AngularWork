@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html ng-app="fireBaseApp">
+<head>
+    <script src="https://cdn.firebase.com/js/client/2.4.0/firebase.js"></script>
+    <script src="../js/angular.min.js"></script>
+    <script src="../js/example/app-firebase.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+</head>
+<title>Angular Http</title>
+<body ng-controller="fireBaseViewController">
+<div>
+    <div class="container">
+        <br/>
+        <form ng-submit="searchUser()">
+            <input type="text" ng-model="searchName" placeholder="Search for users..." class="form-control">
+            <button class="btn btn-info">Search</button>
+        </form>
+        <br/>
+        <br/>
+        <div>
+            <table class="table table-bordered table-striped table-hover">
+                <tr>
+                    <td><input type="text" ng-model="userId" placeholder="User Id" class="form-control"></td>
+                    <td><input type="text" ng-model="userName" placeholder="User Name" class="form-control"></td>
+                    <td><input type="text" ng-model="userPhone" placeholder="User Phone" class="form-control"></td>
+                    <td><input type="text" ng-model="userEmail" placeholder="User E-mail" class="form-control"></td>
+                    <td><a class="btn btn-success" ng-click="addUser()">Add User <span class=" glyphicon glyphicon-plus"></span></a></td>
+                </tr>
+            </table>
+        </div>
+        <br/>
+        <h1>Users List</h1>
+        <table class="table table-bordered table-striped table-hover">
+            <tr ng-repeat="user in usersList">
+                <td>{{ user.id }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.phone }}</td>
+                <td>{{ user.email }}</td>
+                <td><button type="button" class="btn btn-primary">Edit</button> <button type="button" class="btn btn-danger">Delete</button> </td>
+                <!--<td><address>Address: {{ user.address.street }}<br /> St. {{ user.address.suite }}<br /> {{ user.address.city }} </address></td>-->
+            </tr>
+        </table>
+
+        <h1>Select Users</h1>
+        <select ng-model="users" ng-options="item.id as item.name for item in usersList" ng-change="getComments(users)"></select>
+
+        <h2>Comments</h2>
+        <ul>
+            <li ng-repeat="comment in comments">
+                <h2>{{ comment.name }}</h2>
+                <p><strong>{{ comment.email }}</strong></p>
+                <p>{{ comment.body }}</p>
+            </li>
+        </ul>
+
+
+    </div>
+</div>
+</body>
+</html>
