@@ -11,12 +11,25 @@ app.controller('fireBaseViewController', ['$scope','$http', function($scope, $ht
     $scope.usersFirebase = new Firebase(fireBaseUrl+'/users');
 
 
-
     $scope.usersFirebase.on('value', function(data) {
         $scope.usersList = data.val();
         $scope.usersListTemp = data.val();
-        $scope.$apply();
+        $scope.safeApply(function() {
+           //
+        });
     });
+
+    $scope.safeApply = function(fn) {
+        var phase = this.$root.$$phase;
+        if(phase == '$apply' || phase == '$digest') {
+            if(fn && (typeof(fn) === 'function')) {
+                fn();
+            }
+        } else {
+            this.$apply(fn);
+        }
+    };
+
 
     $scope.getComments = function ($userId) {
         $http.get(commentsJsonUrl + $userId)
@@ -55,4 +68,20 @@ app.controller('fireBaseViewController', ['$scope','$http', function($scope, $ht
         });
     };
 
+    $scope.deleteUser = function(key){
+
+        var fredRef = new Firebase(fireBaseUrl+'/users/'+key);
+        var onComplete = function(error) {
+            if (error) {
+                console.log('Synchronization failed');
+            } else {
+                console.log('Synchronization succeeded');
+            }
+        };
+
+        fredRef.remove(onComplete);
+    }
+
 }]);
+
+
