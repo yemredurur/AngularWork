@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding" useUTFGuessing="true" native2AsciiForPropertiesFiles="false">
+    <file url="file://$PROJECT_DIR$/css/bootstrap-theme.min.css" charset="ISO-8859-9" />
     <file url="file://$PROJECT_DIR$/examples/angular-basics.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/examples/angular-firebase.html" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/examples/angular-http.html" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/js/lib/angularfire.min.js" charset="ISO-8859-9" />
+    <file url="file://$PROJECT_DIR$/js/lib/bootstrap.min.js" charset="ISO-8859-9" />
+    <file url="file://$PROJECT_DIR$/js/lib/firebase.js" charset="ISO-8859-9" />
+    <file url="file://$PROJECT_DIR$/js/lib/jquery.min.js" charset="ISO-8859-9" />
   </component>
 </project>
 
