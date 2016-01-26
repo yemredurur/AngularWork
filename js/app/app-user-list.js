@@ -15,8 +15,20 @@ app.factory("userLists", ["$firebaseArray",
     }
 ]);
 
-app.controller('userListViewController', ['$scope', '$firebaseObject', 'userLists',
-    function($scope, $firebaseObject, userLists){
+app.factory("User", ["$firebaseObject",
+    function($firebaseObject) {
+        return function(userKey) {
+            // create a reference to the database node where we will store our data
+            var ref = new Firebase(fireBaseUrl+'/users');
+            var userRef = ref.child(userKey);
+            // return it as a synchronized object
+            return $firebaseObject(userRef);
+        }
+    }
+]);
+
+app.controller('userListViewController', ['$scope', '$firebaseObject', 'userLists', 'User',
+    function($scope, $firebaseObject, userLists, User){
         $scope.usersList = userLists;
         $scope.showAdded = false;
 
@@ -37,13 +49,11 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
 
             setTimeout(function(){
                 $scope.showAdded = false;
-                console.log('aaaaaaa');
             }, 2000);
         };
 
         $scope.deleteUser = function(key){
-            var userRef = new Firebase(fireBaseUrl+'/users/'+key);
-            var obj = $firebaseObject(userRef);
+            var obj = User(key);
             obj.$remove().then(function(ref) {
                 console.log('data has been deleted locally and in the database');
             }, function(error) {
@@ -59,20 +69,13 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
         $scope.saveUser = function(user){
             var edit = 'showEdit'+user.id;
             $scope[ edit ] = false;
-
-            var userRef = new Firebase(fireBaseUrl+'/users/'+user.$id);
-            var obj = $firebaseObject(userRef);
-                obj.id = $scope[ edit ].editUserId,
-                obj.name = $scope[ edit ].editUserName,
-                obj.phone = $scope[ edit ].editUserPhone,
-                obj.email = $scope[ edit ].editUserEmail
-
-            obj.$save().then(function(ref) {
-                console.log('data has been deleted locally and in the database');
+            userLists.$save(user).then(function(ref) {
+                console.log('data has been saved locally and in the database');
             }, function(error) {
                 console.log("Error:", error);
             });
         };
+
     }
 ]);
 

@@ -67,23 +67,23 @@
         <tr ng-repeat="user in usersList">
             <td>
                 <span ng-hide="showEdit{{ user.id }}">{{ user.id }}</span>
-                <input ng-show="showEdit{{ user.id }}" type="text" value="{{ user.id }}" placeholder="User Id" class="form-control">
+                <input ng-show="showEdit{{ user.id }}" ng-model="user.id" type="text" value="{{ user.id }}" placeholder="User Id" class="form-control">
             </td>
             <td>
                 <span ng-hide="showEdit{{ user.id }}">{{ user.name }}</span>
-                <input ng-show="showEdit{{ user.id }}" type="text" value="{{ user.name }}" placeholder="User Name" class="form-control">
+                <input ng-show="showEdit{{ user.id }}" ng-model="user.name" type="text" value="{{ user.name }}" placeholder="User Name" class="form-control">
             </td>
             <td>
                 <span ng-hide="showEdit{{ user.id }}">{{ user.phone }}</span>
-                <input ng-show="showEdit{{ user.id }}" type="text" value="{{ user.phone }}" placeholder="User Phone" class="form-control">
+                <input ng-show="showEdit{{ user.id }}" ng-model="user.phone" type="text" value="{{ user.phone }}" placeholder="User Phone" class="form-control">
             </td>
             <td>
                 <span ng-hide="showEdit{{ user.id }}">{{ user.email }}</span>
-                <input ng-show="showEdit{{ user.id }}" type="text" value="{{ user.email }}" placeholder="User E-mail" class="form-control">
+                <input ng-show="showEdit{{ user.id }}" ng-model="user.email" type="text" value="{{ user.email }}" placeholder="User E-mail" class="form-control">
             </td>
             <td>
                 <button type="button" ng-hide="showEdit{{ user.id }}" class="btn btn-primary" ng-click="editUser(user)">Edit</button>
-                <button type="button" ng-show="showEdit{{ user.id }}" class="btn btn-warning" ng-click="user.$save(user)">Save</button>
+                <button type="button" ng-show="showEdit{{ user.id }}" class="btn btn-warning" ng-click="saveUser(user)">Save</button>
                 <button type="button" class="btn btn-danger" ng-click="deleteUser(user.$id)">Delete</button>
             </td>
             <!--<td><address>Address: {{ user.address.street }}<br /> St. {{ user.address.suite }}<br /> {{ user.address.city }} </address></td>-->
