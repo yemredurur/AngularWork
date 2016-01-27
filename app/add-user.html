@@ -50,15 +50,15 @@
         <form name="addUserForm" novalidate class="form" role="form" ng-submit="addUserCtrl.submitForm(addUserCtrl.addUserForm)">
             <div class="row show-grid">
                 <div class="col-xs-6">
-                    <input type="text" ng-model="addUserCtrl.addUserForm.userId" name="userId" required="true" placeholder="User Id" class="form-control" ng-minlength="3" ng-maxlength="5">
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userId" name="userId" required="true" placeholder="User Id" class="form-control" maxlength="5" ng-minlength="3" ng-maxlength="5">
                     <div class="form-group has-error" ng-show="addUserForm.userId.$dirty && addUserForm.userId.$invalid">
-                        Please Enter Id
+                        <p class="control-label">Please Enter Id between 3 - 5 characters</p>
                     </div>
                 </div>
                 <div class="col-xs-6">
-                    <input type="text" ng-model="addUserCtrl.addUserForm.userName " name="userName" required="true" placeholder="User Name" class="form-control">
-                    <div class="form-group has-error" ng-show="addUserForm.userName.$dirty && addUserForm.userName.$invalid">
-                        Please Enter Name
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userName " name="userName" required="true" ng-maxlength="50" maxlength="50" placeholder="User Name" class="form-control">
+                    <div class="has-error" ng-show="addUserForm.userName.$dirty && addUserForm.userName.$invalid">
+                        <p class="control-label">Please Enter Name</p>
                     </div>
                 </div>
             </div>
