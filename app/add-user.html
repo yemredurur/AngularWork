@@ -12,13 +12,13 @@
     <script src="../js/lib/firebase.js"></script>
     <!-- AngularFire -->
     <script src="../js/lib/angularfire.min.js"></script>
-    <script src="../js/app/app-user-list.js"></script>
+    <script src="../js/app/app-add-user.js"></script>
     <script src="../js/lib/bootstrap.min.js"></script>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
 </head>
 
-<body role="document" ng-controller="addUserViewController">
+<body role="document" ng-controller="addUserCtrl">
 
 <!-- Fixed navbar -->
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -47,20 +47,30 @@
         <div class="page-header" style="margin-top: 70px;">
             <h1>Add User</h1>
         </div>
-        <form novalidate class="form" role="form" ng-submit="">
+        <form name="addUserForm" novalidate class="form" role="form" ng-submit="addUserCtrl.submitForm(addUserCtrl.addUserForm)">
             <div class="row show-grid">
-                <div class="col-xs-6"><input type="text" ng-model="userId" placeholder="User Id" class="form-control"></div>
-                <div class="col-xs-6"><input type="text" ng-model="userName" placeholder="User Name" class="form-control"></div>
+                <div class="col-xs-6">
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userId" name="userId" required="true" placeholder="User Id" class="form-control" ng-minlength="3" ng-maxlength="5">
+                    <div class="form-group has-error" ng-show="addUserForm.userId.$dirty && addUserForm.userId.$invalid">
+                        Please Enter Id
+                    </div>
+                </div>
+                <div class="col-xs-6">
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userName " name="userName" required="true" placeholder="User Name" class="form-control">
+                    <div class="form-group has-error" ng-show="addUserForm.userName.$dirty && addUserForm.userName.$invalid">
+                        Please Enter Name
+                    </div>
+                </div>
             </div>
 
             <div class="row show-grid">
-                <div class="col-xs-6"><input type="text" ng-model="userPhone" placeholder="User Phone" class="form-control"></div>
-                <div class="col-xs-6"><input type="text" ng-model="userEmail" placeholder="User E-mail" class="form-control"></div>
+                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.userPhone" required="true" placeholder="User Phone" class="form-control"></div>
+                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.userEmail" required="true" placeholder="User E-mail" class="form-control"></div>
             </div>
 
             <div class="row show-grid">
-                <div class="col-xs-6"><input type="text" ng-model="userNickName" placeholder="Nick Name" class="form-control"></div>
-                <div class="col-xs-6"><input type="text" ng-model="userWebSite" placeholder="Web Site" class="form-control"></div>
+                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.userNickName" placeholder="Nick Name" class="form-control"></div>
+                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.userWebSite" placeholder="Web Site" class="form-control"></div>
             </div>
 
             <div class="page-header">
@@ -68,18 +78,18 @@
             </div>
 
             <div class="row show-grid">
-                <div class="col-xs-6"><input type="text" ng-model="city" placeholder="City" class="form-control"></div>
-                <div class="col-xs-6"><input type="text" ng-model="street" placeholder="Street" class="form-control"></div>
+                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.city" placeholder="City" class="form-control"></div>
+                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.street" placeholder="Street" class="form-control"></div>
             </div>
 
             <div class="row show-grid">
-                <div class="col-xs-6"><input type="text" ng-model="suite" placeholder="Suite" class="form-control"></div>
-                <div class="col-xs-6"><input type="text" ng-model="zipCode" placeholder="Zip Code" class="form-control"></div>
+                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.suite" placeholder="Suite" class="form-control"></div>
+                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.zipCode" placeholder="Zip Code" class="form-control"></div>
             </div>
 
             <div class="row show-grid">
                 <div class="col-xs-6">
-                    <input class="btn btn-success" ng-click="addUser()" value="Add User" />
+                    <input type="submit" class="btn btn-success" value="Add User" />
                 </div>
             </div>
 
@@ -90,10 +100,6 @@
         </div>
 
     </div>
-</div>
-
-
-
 </div>
 <!-- /container -->
 </body>

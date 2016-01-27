@@ -6,7 +6,7 @@ var app = angular.module('addUserApp', ["firebase"]),
     fireBaseUrl = "https://shining-torch-9442.firebaseio.com";
 
 
-app.factory("addUserApp", ["$firebaseArray",
+app.factory("userLists", ["$firebaseArray",
     function($firebaseArray) {
         // create a reference to the database location where we will store our data
         var ref = new Firebase(fireBaseUrl+'/users');
@@ -27,7 +27,7 @@ app.factory("User", ["$firebaseObject",
     }
 ]);
 
-app.controller('addUserViewController', ['$scope', '$firebaseObject', 'userLists', 'User',
+app.controller('addUserCtrl', ['$scope', '$firebaseObject', 'userLists', 'User',
     function($scope, $firebaseObject, userLists, User){
         $scope.usersList = userLists;
         $scope.showAdded = false;
