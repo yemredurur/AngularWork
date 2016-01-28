@@ -31,9 +31,8 @@ app.controller('addUserCtrl', ['$scope', '$firebaseObject', 'userLists', 'User',
     function($scope, $firebaseObject, userLists, User){
         $scope.usersList = userLists;
         $scope.showAdded = false;
-        console.log($scope);
+
         $scope.submitForm = function() {
-            console.log($scope.addUserForm.userName.$viewValue);
             $scope.usersList.$add({
                 id: $scope.addUserForm.userId.$viewValue,
                 name: $scope.addUserForm.userName.$viewValue,

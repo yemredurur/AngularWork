@@ -45,7 +45,7 @@
     <div class="page-header" style="margin-top: 70px;">
         <h1>Add User</h1>
     </div>
-    <form name="addUserForm" novalidate class="form" role="form" ng-submit="submitForm(addUserCtrl.addUserForm)">
+    <form name="addUserForm" novalidate class="form" role="form"  ng-submit="submitForm()">
         <table class="table table-bordered table-striped table-hover">
             <tr>
                 <td ng-class="{'has-error': addUserForm.userId.$touched  && addUserForm.userId.$invalid, 'has-success': addUserForm.userId.$touched  && addUserForm.userId.$valid}">

@@ -32,21 +32,16 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
         $scope.usersList = userLists;
         $scope.showAdded = false;
 
-        $scope.addUser = function () {
+        $scope.submitForm = function () {
             $scope.usersList.$add({
-                id: $scope.userId,
-                name: $scope.userName,
-                phone: $scope.userPhone,
-                email : $scope.userEmail,
-                address: {
-                    city: "San Francisco",
-                    street: "California",
-                    suite: "Apt. 692",
-                    zipcode: 94103
-                }
+                id: $scope.addUserForm.userId.$viewValue,
+                name: $scope.addUserForm.userName.$viewValue,
+                phone: $scope.addUserForm.userPhone.$viewValue,
+                email : $scope.addUserForm.userEmail.$viewValue
             });
             $scope.showAdded = true;
 
+            $scope.addUserForm.$setPristine();
             setTimeout(function(){
                 $scope.showAdded = false;
             }, 2000);
