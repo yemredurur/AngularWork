@@ -49,6 +49,8 @@ app.controller('addUserCtrl', ['$scope', '$firebaseObject', 'userLists', 'User',
             });
             $scope.showAdded = true;
 
+            document.getElementById("addUserForm").reset();
+
             setTimeout(function(){
                 $scope.showAdded = false;
             }, 2000);

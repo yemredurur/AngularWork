@@ -45,7 +45,7 @@
     <div class="page-header" style="margin-top: 70px;">
         <h1>Add User</h1>
     </div>
-    <form name="addUserForm" novalidate class="form" role="form"  ng-submit="submitForm()">
+    <form name="addUserForm" id="addUserForm" novalidate class="form" role="form"  ng-submit="submitForm()">
         <table class="table table-bordered table-striped table-hover">
             <tr>
                 <td ng-class="{'has-error': addUserForm.userId.$touched  && addUserForm.userId.$invalid, 'has-success': addUserForm.userId.$touched  && addUserForm.userId.$valid}">
@@ -98,8 +98,10 @@
             </td>
             <td>
                 <button type="button" ng-hide="showEdit{{ user.id }}" class="btn btn-primary" ng-click="editUser(user)">Edit</button>
+                <button type="button" ng-hide="showEdit{{ user.id }}" class="btn btn-danger" ng-click="deleteUser(user.$id)">Delete</button>
+
                 <button type="button" ng-show="showEdit{{ user.id }}" class="btn btn-warning" ng-click="saveUser(user)">Save</button>
-                <button type="button" class="btn btn-danger" ng-click="deleteUser(user.$id)">Delete</button>
+                <button type="button" ng-show="showEdit{{ user.id }}" class="btn btn-danger" ng-click="cancelEdit(user)">Cancel</button>
             </td>
             <!--<td><address>Address: {{ user.address.street }}<br /> St. {{ user.address.suite }}<br /> {{ user.address.city }} </address></td>-->
         </tr>

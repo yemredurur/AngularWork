@@ -44,6 +44,7 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
             $scope.addUserForm.$setPristine();
             setTimeout(function(){
                 $scope.showAdded = false;
+                document.getElementById("addUserForm").reset();
             }, 2000);
         };
 
@@ -59,6 +60,11 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
         $scope.editUser = function(user){
             var edit = 'showEdit'+user.id;
             $scope[ edit ] = true
+        };
+
+        $scope.cancelEdit = function(user){
+            var edit = 'showEdit'+user.id;
+            $scope[ edit ] = false
         };
 
         $scope.saveUser = function(user){
