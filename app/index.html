@@ -8,6 +8,7 @@
     <title>Angular Project</title>
     <script src="../js/lib/jquery.min.js"></script>
     <script src="../js/lib/angular.min.js"></script>
+    <script src="../js/lib/angular-messages.js"></script>
     <!-- Firebase -->
     <script src="../js/lib/firebase.js"></script>
     <!-- AngularFire -->
@@ -46,15 +47,27 @@
     <div class="page-header" style="margin-top: 70px;">
         <h1>Add User</h1>
     </div>
-    <table class="table table-bordered table-striped table-hover">
-        <tr>
-            <td><input type="text" ng-model="userId" placeholder="User Id" class="form-control"></td>
-            <td><input type="text" ng-model="userName" placeholder="User Name" class="form-control"></td>
-            <td><input type="text" ng-model="userPhone" placeholder="User Phone" class="form-control"></td>
-            <td><input type="text" ng-model="userEmail" placeholder="User E-mail" class="form-control"></td>
-            <td><a class="btn btn-success" ng-click="addUser()">Add User <span class=" glyphicon glyphicon-plus"></span></a></td>
-        </tr>
-    </table>
+    <form name="addUserForm" novalidate class="form" role="form" ng-submit="addUserForm.$invalid && addUserCtrl.submitForm(addUserCtrl.addUserForm)">
+        <table class="table table-bordered table-striped table-hover">
+            <tr>
+                <td ng-class="{'has-error': addUserForm.userId.$touched  && addUserForm.userId.$invalid, 'has-success': addUserForm.userId.$touched  && addUserForm.userId.$valid}">
+                    <input type="text" ng-model="userId" name="userId" placeholder="User Id" class="form-control">
+                </td>
+                <td>
+                    <input type="text" ng-model="userName" name="userName" placeholder="User Name" class="form-control">
+                </td>
+                <td>
+                    <input type="text" ng-model="userPhone" name="userPhone" placeholder="User Phone" class="form-control">
+                </td>
+                <td>
+                    <input type="text" ng-model="userEmail" name="userEmail" placeholder="User E-mail" class="form-control">
+                </td>
+                <td>
+                    <a class="btn btn-success" ng-click="addUser()">Add User <span class=" glyphicon glyphicon-plus"></span></a>
+                </td>
+            </tr>
+        </table>
+    </form>
 
     <div ng-show="showAdded" class="alert alert-success" role="alert">
         <strong>Well done!</strong> You successfully added the user;

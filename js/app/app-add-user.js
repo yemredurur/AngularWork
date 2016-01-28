@@ -2,7 +2,7 @@
  * Created by ydurur on 23/01/16.
  */
 
-var app = angular.module('addUserApp', ["firebase"]),
+var app = angular.module('addUserApp', ["firebase","ngMessages"]),
     fireBaseUrl = "https://shining-torch-9442.firebaseio.com";
 
 
