@@ -31,18 +31,21 @@ app.controller('addUserCtrl', ['$scope', '$firebaseObject', 'userLists', 'User',
     function($scope, $firebaseObject, userLists, User){
         $scope.usersList = userLists;
         $scope.showAdded = false;
-
-        $scope.addUser = function () {
+        console.log($scope);
+        $scope.submitForm = function() {
+            console.log($scope.addUserForm.userName.$viewValue);
             $scope.usersList.$add({
-                id: $scope.userId,
-                name: $scope.userName,
-                phone: $scope.userPhone,
-                email : $scope.userEmail,
+                id: $scope.addUserForm.userId.$viewValue,
+                name: $scope.addUserForm.userName.$viewValue,
+                phone: $scope.addUserForm.userPhone.$viewValue,
+                email : $scope.addUserForm.userEmail.$viewValue,
+                username : $scope.addUserForm.userName.$viewValue,
+                website : $scope.addUserForm.userWebSite.$viewValue,
                 address: {
-                    city: "San Francisco",
-                    street: "California",
-                    suite: "Apt. 692",
-                    zipcode: 94103
+                    city: $scope.addUserForm.city,
+                    street: $scope.addUserForm.street,
+                    suite: $scope.addUserForm.suite,
+                    zipcode: $scope.addUserForm.zipCode
                 }
             });
             $scope.showAdded = true;

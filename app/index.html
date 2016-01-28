@@ -8,7 +8,6 @@
     <title>Angular Project</title>
     <script src="../js/lib/jquery.min.js"></script>
     <script src="../js/lib/angular.min.js"></script>
-    <script src="../js/lib/angular-messages.js"></script>
     <!-- Firebase -->
     <script src="../js/lib/firebase.js"></script>
     <!-- AngularFire -->
@@ -37,7 +36,6 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="index.html">Users</a></li>
                 <li><a href="add-user.html">Add User</a></li>
-                <li><a href="filter-user.html">Filter Users</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </div>
@@ -47,23 +45,27 @@
     <div class="page-header" style="margin-top: 70px;">
         <h1>Add User</h1>
     </div>
-    <form name="addUserForm" novalidate class="form" role="form" ng-submit="addUserForm.$invalid && addUserCtrl.submitForm(addUserCtrl.addUserForm)">
+    <form name="addUserForm" novalidate class="form" role="form" ng-submit="submitForm(addUserCtrl.addUserForm)">
         <table class="table table-bordered table-striped table-hover">
             <tr>
                 <td ng-class="{'has-error': addUserForm.userId.$touched  && addUserForm.userId.$invalid, 'has-success': addUserForm.userId.$touched  && addUserForm.userId.$valid}">
-                    <input type="text" ng-model="userId" name="userId" placeholder="User Id" class="form-control">
+                    <label class="control-label">User Id</label>
+                    <input type="text" ngPattern="^[0-9]" ng-model="addUserCtrl.addUserForm.userId" name="userId" required="true" placeholder="User Id" class="form-control" maxlength="10" ng-minlength="2" ng-maxlength="5">
                 </td>
-                <td>
-                    <input type="text" ng-model="userName" name="userName" placeholder="User Name" class="form-control">
+                <td  ng-class="{'has-error': addUserForm.userName.$touched  && addUserForm.userName.$invalid, 'has-success': addUserForm.userName.$touched  && addUserForm.userName.$valid}">
+                    <label class="control-label">User Name</label>
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userName " name="userName" required="true" ng-maxlength="50" maxlength="50" placeholder="User Name" class="form-control">
                 </td>
-                <td>
-                    <input type="text" ng-model="userPhone" name="userPhone" placeholder="User Phone" class="form-control">
+                <td ng-class="{'has-error': addUserForm.userPhone.$touched  && addUserForm.userPhone.$invalid, 'has-success': addUserForm.userPhone.$touched  && addUserForm.userPhone.$valid}">
+                    <label class="control-label">User Phone</label>
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userPhone" name="userPhone" required="true" placeholder="User Phone" class="form-control" maxlength="11" minlength="10" ng-minlength="10"  ng-manlength="11">
                 </td>
-                <td>
-                    <input type="text" ng-model="userEmail" name="userEmail" placeholder="User E-mail" class="form-control">
+                <td ng-class="{'has-error': addUserForm.userEmail.$touched  && addUserForm.userEmail.$invalid, 'has-success': addUserForm.userEmail.$touched  && addUserForm.userEmail.$valid}">
+                    <label class="control-label">User e-mail</label>
+                    <input type="text"  ng-model="addUserCtrl.addUserForm.userEmail" name="userEmail" required="true" placeholder="User E-mail" class="form-control" ng-pattern='/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'>
                 </td>
-                <td>
-                    <a class="btn btn-success" ng-click="addUser()">Add User <span class=" glyphicon glyphicon-plus"></span></a>
+                <td valign="center">
+                    <input type="submit" ng-disabled="addUserForm.$invalid" class="btn btn-success" value="Add User" style="margin-top:25px;" />
                 </td>
             </tr>
         </table>
