@@ -14,6 +14,7 @@
     <script src="../js/lib/angularfire.min.js"></script>
     <script src="../js/app/app-add-user.js"></script>
     <script src="../js/lib/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
 </head>
@@ -47,30 +48,61 @@
         <div class="page-header" style="margin-top: 70px;">
             <h1>Add User</h1>
         </div>
-        <form name="addUserForm" novalidate class="form" role="form" ng-submit="addUserCtrl.submitForm(addUserCtrl.addUserForm)">
+        <form name="addUserForm" novalidate class="form" role="form" ng-submit="addUserForm.$invalid && addUserCtrl.submitForm(addUserCtrl.addUserForm)">
             <div class="row show-grid">
-                <div class="col-xs-6">
-                    <input type="text" ng-model="addUserCtrl.addUserForm.userId" name="userId" required="true" placeholder="User Id" class="form-control" maxlength="5" ng-minlength="3" ng-maxlength="5">
-                    <div class="form-group has-error" ng-show="addUserForm.userId.$dirty && addUserForm.userId.$invalid">
-                        <p class="control-label">Please Enter Id between 3 - 5 characters</p>
+                <div class="col-xs-6" ng-class="{'has-error': addUserForm.userId.$touched  && addUserForm.userId.$invalid}">
+                    <label class="control-label">User Id</label>
+                    <input type="text" ngPattern="^[0-9]" ng-model="addUserCtrl.addUserForm.userId" name="userId" required="true" placeholder="User Id" class="form-control" maxlength="10" ng-minlength="2" ng-maxlength="5">
+                    <div class="form-group" ng-show="addUserForm.userId.$dirty && addUserForm.userId.$invalid">
+                        <p class="control-label">Please Enter Id between 2 - 5 characters</p>
                     </div>
+                    <!--
+                    <div class="form-group has-error" ng-show="addUserForm.userId.$dirty addUserForm.userId.$error.number">
+                        <p class="control-label">Not valid number!</P>
+                    </div>-->
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-6" ng-class="{'has-error': addUserForm.userName.$touched  && addUserForm.userName.$invalid}">
+                    <label class="control-label">User Name</label>
                     <input type="text" ng-model="addUserCtrl.addUserForm.userName " name="userName" required="true" ng-maxlength="50" maxlength="50" placeholder="User Name" class="form-control">
-                    <div class="has-error" ng-show="addUserForm.userName.$dirty && addUserForm.userName.$invalid">
+                    <div ng-show="addUserForm.userName.$dirty && addUserForm.userName.$invalid">
                         <p class="control-label">Please Enter Name</p>
                     </div>
                 </div>
             </div>
 
             <div class="row show-grid">
-                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.userPhone" required="true" placeholder="User Phone" class="form-control"></div>
-                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.userEmail" required="true" placeholder="User E-mail" class="form-control"></div>
+                <div class="col-xs-6" ng-class="{'has-error': addUserForm.userPhone.$touched  && addUserForm.userPhone.$invalid}">
+                    <label class="control-label">User Phone</label>
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userPhone" name="userPhone" required="true" placeholder="User Phone" class="form-control" maxlength="11" minlength="10" ng-minlength="10"  ng-manlength="11">
+                    <div ng-show="addUserForm.userPhone.$dirty && addUserForm.userPhone.$invalid">
+                        <p class="control-label">Please Enter a phone</p>
+                    </div>
+                </div>
+                <div class="col-xs-6" ng-class="{'has-error': addUserForm.userEmail.$touched  && addUserForm.userEmail.$invalid}">
+                    <label class="control-label">User E-mail</label>
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userEmail" name="userEmail" required="true" placeholder="User E-mail" class="form-control" ng-pattern='/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/'>
+                    <div ng-show="addUserForm.userEmail.$dirty && addUserForm.userEmail.$invalid">
+                        <p class="control-label">Please Enter a e-mail</p>
+                    </div>
+                </div>
             </div>
 
             <div class="row show-grid">
-                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.userNickName" placeholder="Nick Name" class="form-control"></div>
-                <div class="col-xs-6"><input type="text" ng-model="addUserCtrl.addUserForm.userWebSite" placeholder="Web Site" class="form-control"></div>
+                <div class="col-xs-6" ng-class="{'has-error': addUserForm.userNickName.$touched  && addUserForm.userNickName.$invalid}">
+                    <label class="control-label">Nick Name</label>
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userNickName" name="userNickName" required="true" placeholder="Nick Name" class="form-control" maxlength="15">
+                    <div ng-show="addUserForm.userNickName.$dirty && addUserForm.userNickName.$invalid">
+                        <p class="control-label">Please Enter a nick name</p>
+                    </div>
+                </div>
+                <div class="col-xs-6" ng-class="{'has-error': addUserForm.userWebSite.$touched  && addUserForm.userWebSite.$invalid}">
+                    <label class="control-label">Web Site</label>
+                    <input type="text" ng-model="addUserCtrl.addUserForm.userWebSite" name="userWebSite" required="true" placeholder="Web Site" class="form-control" maxlength="50" ng-pattern='/^(http\:\/\/[a-zA-Z0-9_\-]+(?:\.[a-zA-Z0-9_\-]+)*\.[a-zA-Z]{2,4}(?:\/[a-zA-Z0-9_]+)*(?:\/[a-zA-Z0-9_]+\.[a-zA-Z]{2,4}(?:\?[a-zA-Z0-9_]+\=[a-zA-Z0-9_]+)?)?(?:\&[a-zA-Z0-9_]+\=[a-zA-Z0-9_]+)*)$/
+'>
+                    <div ng-show="addUserForm.userWebSite.$dirty && addUserForm.userWebSite.$invalid">
+                        <p class="control-label">Please Enter a web site name</p>
+                    </div>
+                </div>
             </div>
 
             <div class="page-header">
@@ -89,7 +121,7 @@
 
             <div class="row show-grid">
                 <div class="col-xs-6">
-                    <input type="submit" class="btn btn-success" value="Add User" />
+                    <input type="submit" ng-disabled="addUserForm.$invalid" class="btn btn-success" value="Add User" />
                 </div>
             </div>
 
