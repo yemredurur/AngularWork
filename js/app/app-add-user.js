@@ -46,14 +46,14 @@ app.controller('addUserCtrl', ['$scope', '$firebaseObject', 'userLists', 'User',
                     suite: $scope.addUserForm.suite,
                     zipcode: $scope.addUserForm.zipCode
                 }
+            }).then(function(ref) {
+                $scope.showAdded = true;
+                var id = ref.key();
+                document.getElementById("addUserForm").reset();
+                console.log("added record with id " + id);
             });
-            $scope.showAdded = true;
+            $scope.showAdded = false;
 
-            document.getElementById("addUserForm").reset();
-
-            setTimeout(function(){
-                $scope.showAdded = false;
-            }, 2000);
         };
 
     }

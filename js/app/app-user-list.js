@@ -38,14 +38,14 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
                 name: $scope.addUserForm.userName.$viewValue,
                 phone: $scope.addUserForm.userPhone.$viewValue,
                 email : $scope.addUserForm.userEmail.$viewValue
-            });
-            $scope.showAdded = true;
-
-            $scope.addUserForm.$setPristine();
-            setTimeout(function(){
-                $scope.showAdded = false;
+            }).then(function(ref) {
+                $scope.showAdded = true;
+                var id = ref.key();
                 document.getElementById("addUserForm").reset();
-            }, 2000);
+                console.log("added record with id " + id);
+            });
+            $scope.showAdded = false;
+
         };
 
         $scope.deleteUser = function(key){

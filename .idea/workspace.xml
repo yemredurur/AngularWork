@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="33dfd99d-3d6d-4a88-b0fb-bef397f369b1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/add-user.html" afterPath="$PROJECT_DIR$/app/add-user.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/app-add-user.js" afterPath="$PROJECT_DIR$/js/app/app-add-user.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/app/app-user-list.js" afterPath="$PROJECT_DIR$/js/app/app-user-list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/index.html" afterPath="$PROJECT_DIR$/app/index.html" />
     </list>
     <ignored path="AngularWork.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -30,10 +28,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52380955" vertical-offset="945" max-vertical-offset="4035">
+            <state vertical-scroll-proportion="-10.5" vertical-offset="750" max-vertical-offset="4035">
               <caret line="103" column="91" selection-start-line="103" selection-start-column="91" selection-end-line="103" selection-end-column="91" />
               <folding>
                 <element signature="tag#nav#0;tag#body#0;tag#html#0" expanded="false" />
@@ -43,11 +41,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="app-user-list.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="app-user-list.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/app/app-user-list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.038462" vertical-offset="651" max-vertical-offset="1320">
-              <caret line="66" column="34" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
+            <state vertical-scroll-proportion="1.2155963" vertical-offset="0" max-vertical-offset="1320">
+              <caret line="53" column="62" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="62" />
               <folding />
             </state>
           </provider>
@@ -56,8 +54,8 @@
       <file leaf-file-name="app-add-user.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/app/app-add-user.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.703704" vertical-offset="349" max-vertical-offset="1005">
-              <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+            <state vertical-scroll-proportion="-9.092592" vertical-offset="274" max-vertical-offset="1005">
+              <caret line="51" column="63" selection-start-line="51" selection-start-column="63" selection-end-line="51" selection-end-column="63" />
               <folding />
             </state>
           </provider>
@@ -129,9 +127,9 @@
         <option value="$PROJECT_DIR$/js/lib/angular-messages.js" />
         <option value="$PROJECT_DIR$/js/lib/angular-route.js" />
         <option value="$PROJECT_DIR$/app/add-user.html" />
-        <option value="$PROJECT_DIR$/js/app/app-add-user.js" />
-        <option value="$PROJECT_DIR$/js/app/app-user-list.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
+        <option value="$PROJECT_DIR$/js/app/app-user-list.js" />
+        <option value="$PROJECT_DIR$/js/app/app-add-user.js" />
       </list>
     </option>
   </component>
@@ -627,30 +625,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.5" vertical-offset="750" max-vertical-offset="4035">
+          <caret line="103" column="91" selection-start-line="103" selection-start-column="91" selection-end-line="103" selection-end-column="91" />
+          <folding>
+            <element signature="tag#nav#0;tag#body#0;tag#html#0" expanded="false" />
+            <element signature="n#style#0;n#input#0;n#td#4;n#tr#0;n#table#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/js/app/app-add-user.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.703704" vertical-offset="349" max-vertical-offset="1005">
-          <caret line="51" column="35" selection-start-line="51" selection-start-column="35" selection-end-line="51" selection-end-column="35" />
+        <state vertical-scroll-proportion="-9.092592" vertical-offset="274" max-vertical-offset="1005">
+          <caret line="51" column="63" selection-start-line="51" selection-start-column="63" selection-end-line="51" selection-end-column="63" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/js/app/app-user-list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.038462" vertical-offset="651" max-vertical-offset="1320">
-          <caret line="66" column="34" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="34" />
+        <state vertical-scroll-proportion="1.2155963" vertical-offset="0" max-vertical-offset="1320">
+          <caret line="53" column="62" selection-start-line="53" selection-start-column="59" selection-end-line="53" selection-end-column="62" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52380955" vertical-offset="945" max-vertical-offset="4035">
-          <caret line="103" column="91" selection-start-line="103" selection-start-column="91" selection-end-line="103" selection-end-column="91" />
-          <folding>
-            <element signature="tag#nav#0;tag#body#0;tag#html#0" expanded="false" />
-            <element signature="n#style#0;n#input#0;n#td#4;n#tr#0;n#table#0;n#form#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
