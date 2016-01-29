@@ -27,8 +27,8 @@ app.factory("User", ["$firebaseObject",
     }
 ]);
 
-app.controller('addUserCtrl', ['$scope', '$firebaseObject', 'userLists', 'User',
-    function($scope, $firebaseObject, userLists, User){
+app.controller('addUserCtrl', ['$scope', '$firebaseObject', 'userLists', 'User', '$timeout',
+    function($scope, $firebaseObject, userLists, User, $timeout){
         $scope.usersList = userLists;
         $scope.showAdded = false;
 
@@ -52,7 +52,10 @@ app.controller('addUserCtrl', ['$scope', '$firebaseObject', 'userLists', 'User',
                 document.getElementById("addUserForm").reset();
                 console.log("added record with id " + id);
             });
-            $scope.showAdded = false;
+
+            $timeout(function() {
+                $scope.showAdded = false;
+            },2000);
 
         };
 

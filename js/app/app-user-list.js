@@ -27,8 +27,8 @@ app.factory("User", ["$firebaseObject",
     }
 ]);
 
-app.controller('userListViewController', ['$scope', '$firebaseObject', 'userLists', 'User',
-    function($scope, $firebaseObject, userLists, User){
+app.controller('userListViewController', ['$scope', '$firebaseObject', 'userLists', 'User', '$timeout',
+    function($scope, $firebaseObject, userLists, User, $timeout){
         $scope.usersList = userLists;
         $scope.showAdded = false;
 
@@ -44,7 +44,10 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
                 document.getElementById("addUserForm").reset();
                 console.log("added record with id " + id);
             });
-            $scope.showAdded = false;
+
+            $timeout(function() {
+                $scope.showAdded = false;
+            },2000);
 
         };
 
@@ -76,6 +79,21 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
                 console.log("Error:", error);
             });
         };
+
+        $scope.searchUser = function () {
+            $scope.usersList = userLists;
+            $scope.notFound = false;
+            $scope.searchResult = userLists.filter(function(item){
+                return item.name == $scope.userName || item.username == $scope.userName;
+            });
+            $scope.userName = '';
+            $scope.usersList = $scope.searchResult;
+
+            if(!$scope.searchResult.length){
+                $scope.notFound = true;
+                $scope.usersList = userLists;
+            }
+        }
 
     }
 ]);

@@ -42,7 +42,26 @@
 </nav>
 
 <div class="container theme-showcase" role="main">
-    <div class="page-header" style="margin-top: 70px;">
+    <div style="margin: 70px 0 20px 0;">
+        <div class="page-header">
+            <h1>Search User</h1>
+        </div>
+        <form ng-submit="searchUser()">
+            <div class="row show-grid">
+                <div class="col-xs-11">
+                    <input type="text" ng-model="userName" placeholder="Search for users..." class="form-control">
+                </div>
+                <div class="col-xs-1">
+                    <button class="btn btn-info">Search</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div ng-show="notFound" class="alert alert-danger" role="alert">
+        <strong>User!</strong> not found. Please try again.;
+    </div>
+    <div class="page-header" style="margin-top: 20px;">
         <h1>Add User</h1>
     </div>
     <form name="addUserForm" id="addUserForm" novalidate class="form" role="form"  ng-submit="submitForm()">
@@ -87,6 +106,10 @@
             <td>
                 <span ng-hide="showEdit{{ user.id }}">{{ user.name }}</span>
                 <input ng-show="showEdit{{ user.id }}" ng-model="user.name" type="text" value="{{ user.name }}" placeholder="User Name" class="form-control">
+            </td>
+            <td>
+                <span ng-hide="showEdit{{ user.id }}">{{ user.username }}</span>
+                <input ng-show="showEdit{{ user.id }}" ng-model="user.username" type="text" value="{{ user.username }}" placeholder="Nick Name" class="form-control">
             </td>
             <td>
                 <span ng-hide="showEdit{{ user.id }}">{{ user.phone }}</span>
