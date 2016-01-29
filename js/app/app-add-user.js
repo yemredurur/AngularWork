@@ -10,8 +10,9 @@ app.factory("userLists", ["$firebaseArray",
     function($firebaseArray) {
         // create a reference to the database location where we will store our data
         var ref = new Firebase(fireBaseUrl+'/users');
+        var query = ref.orderByChild("name").limitToLast(10);
         // this uses AngularFire to create the synchronized array
-        return $firebaseArray(ref);
+        return $firebaseArray(query);
     }
 ]);
 
