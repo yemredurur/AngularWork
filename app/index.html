@@ -59,7 +59,7 @@
 
     </div>
     <div ng-show="notFound" class="alert alert-danger" role="alert">
-        <strong>User!</strong> not found. Please try again.;
+        <strong>User!</strong> not found. Please try again.
     </div>
     <div class="page-header" style="margin-top: 20px;">
         <h1>Add User</h1>
@@ -97,7 +97,7 @@
     <div class="page-header" style="margin-top: 70px;">
         <h1>Users List</h1>
     </div>
-    <table class="table table-bordered table-striped table-hover">
+    <table ng-hide="userEmpty" class="table table-bordered table-striped table-hover">
         <thead>
             <tr>
                 <th>ID</th>
@@ -141,6 +141,9 @@
             </tr>
         </tbody>
     </table>
+    <div ng-show="userEmpty" class="alert alert-danger" role="alert">
+        <strong>Users List!</strong> not found.
+    </div>
 
 
 

@@ -31,6 +31,13 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
     function($scope, $firebaseObject, userLists, User, $timeout){
         $scope.usersList = userLists;
         $scope.showAdded = false;
+        $scope.userEmpty = false;
+
+        $timeout(function() {
+            if(userLists.length < 1) {
+                $scope.userEmpty = true;
+            }
+        },2000);
 
         $scope.submitForm = function () {
             $scope.usersList.$add({
@@ -40,9 +47,10 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
                 email : $scope.addUserForm.userEmail.$viewValue
             }).then(function(ref) {
                 $scope.showAdded = true;
+                $scope.userEmpty = false;
                 var id = ref.key();
                 document.getElementById("addUserForm").reset();
-                console.log("added record with id " + id);
+                console.info("added record with id " + id);
             });
 
             $timeout(function() {
@@ -54,9 +62,14 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
         $scope.deleteUser = function(key){
             var obj = User(key);
             obj.$remove().then(function(ref) {
-                console.log('data has been deleted locally and in the database');
+                console.error('data has been deleted locally and in the database');
+                if(userLists.length < 1) {
+                    $scope.userEmpty = true;
+                } else {
+                    $scope.userEmpty = false;
+                }
             }, function(error) {
-                console.log("Error:", error);
+                console.error("Error:", error);
             });
         };
 
@@ -74,9 +87,9 @@ app.controller('userListViewController', ['$scope', '$firebaseObject', 'userList
             var edit = 'showEdit'+user.id;
             $scope[ edit ] = false;
             userLists.$save(user).then(function(ref) {
-                console.log('data has been saved locally and in the database');
+                console.info('data has been saved locally and in the database');
             }, function(error) {
-                console.log("Error:", error);
+                console.error("Error:", error);
             });
         };
 
